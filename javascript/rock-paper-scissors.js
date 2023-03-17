@@ -12,3 +12,18 @@ function getComputerChoice(){
     
     return oppsChoice;
 }
+
+
+function playRound(playerSelection, computerSelection){
+    let playerPrompt = prompt("Rock Paper Scissors?");
+    playerSelection = playerPrompt;
+    computerSelection = getComputerChoice();
+
+    let frmtText1 = playerSelection.charAt(0).toUpperCase();
+    let frmtText2 = playerSelection.substr(1).toLowerCase();
+    let pChoice = frmtText1 + frmtText2;
+
+    console.log("You chose: " + pChoice + " computer chose: " + computerSelection);
+}
+
+playRound();
