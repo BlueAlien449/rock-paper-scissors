@@ -20,23 +20,23 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection){
     let playerPrompt = prompt("Rock Paper Scissors?");
-    playerSelection = playerPrompt;
     computerSelection = getComputerChoice();
 
-    let frmtText1 = playerSelection.charAt(0).toUpperCase();
-    let frmtText2 = playerSelection.substr(1).toLowerCase();
+    let frmtText1 = playerPrompt.charAt(0).toUpperCase();
+    let frmtText2 = playerPrompt.substr(1).toLowerCase();
     let pChoice = frmtText1 + frmtText2;
-    
-    if (pChoice === "Rock" && computerSelection === "Scissors"){
+    playerSelection = pChoice;
+
+    if (playerSelection === "Rock" && computerSelection === "Scissors"){
         winner = "You win, rock beats scissors";
         winCount++;
-    } else if (pChoice === "Paper" && computerSelection === "Rock"){
+    } else if (playerSelection === "Paper" && computerSelection === "Rock"){
         winner = "You win, paper beats to rock";
         winCount++;
-    } else if (pChoice === "Scissors" && computerSelection === "Paper"){
+    } else if (playerSelection === "Scissors" && computerSelection === "Paper"){
         winner = "You lose, scissors beats paper";
         winCount++;
-    } else if (pChoice === computerSelection){
+    } else if (playerSelection === computerSelection){
         winner = "Tie, no one wins"
         tieCount++;
     } else {
@@ -44,7 +44,7 @@ function playRound(playerSelection, computerSelection){
         loseCount++;
     }
 
-    console.log("You chose: " + pChoice + " computer chose: " + computerSelection);
+    console.log("You chose: " + playerSelection + " computer chose: " + computerSelection);
     console.log(winner);
 
 }
