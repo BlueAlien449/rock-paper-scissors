@@ -18,14 +18,13 @@ function getComputerChoice(){
     return oppsChoice;
 }
 
-function playRound(playerSelection, computerSelection){
-    let playerPrompt = prompt("Rock Paper Scissors?");
-    computerSelection = getComputerChoice();
+let choiceList = document.querySelectorAll('.choice');
+choiceList.forEach(key => key.addEventListener('click',game));
 
-    let frmtText1 = playerPrompt.charAt(0).toUpperCase();
-    let frmtText2 = playerPrompt.substr(1).toLowerCase();
-    let pChoice = frmtText1 + frmtText2;
-    playerSelection = pChoice;
+function playRound(playerSelection, computerSelection){
+
+    playerSelection = getPlayerChoice();
+    computerSelection = getComputerChoice();
 
     if (playerSelection === "Rock" && computerSelection === "Scissors"){
         winner = "You win, rock beats scissors";
@@ -60,10 +59,6 @@ function roundWinner(){
 }
 
 function game(){
-    for (let i = 0; i < 5; i++){
         playRound();
-    }
 }
 
-game();
-roundWinner();
