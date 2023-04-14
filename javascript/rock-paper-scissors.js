@@ -18,28 +18,23 @@ function getComputerChoice(){
     return oppsChoice;
 }
 
-function getPlayerChoice(){
-    let buttons = document.getElementsByTagName('button');
-    let playerChoice;
-    let buttonPressed = e => {
-        playerChoice = e.target.id;
-        return playerChoice;
-    }
+let buttons = document.getElementsByTagName('button');
+let playerChoice;
+let buttonPressed = e => {
+    playerChoice = e.target.id;
+}
 
-    for (let button of buttons) {
-        button.addEventListener('click', buttonPressed)
-    }
+for (let button of buttons) {
+    button.addEventListener('click', buttonPressed)
 }
 
 let choiceList = document.querySelectorAll('.choice');
-choiceList.forEach(key => key.addEventListener('click', () => {
-    getPlayerChoice();
-}));
+choiceList.forEach(key => key.addEventListener('click', game));
 
 
 function playRound(playerSelection, computerSelection){
 
-    playerSelection = "Rock";
+    playerSelection = playerChoice;
     computerSelection = getComputerChoice();
 
     if (playerSelection === "Rock" && computerSelection === "Scissors"){
