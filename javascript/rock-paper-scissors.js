@@ -2,6 +2,7 @@ let winner;
 let winCount = 0;
 let loseCount = 0;
 let tieCount = 0;
+let gameCount = 0;
 
 function getComputerChoice(){
     let randInt = Math.floor(Math.random() * 3) +1;
@@ -56,7 +57,7 @@ function playRound(playerSelection, computerSelection){
 
     console.log("You chose: " + playerSelection + " computer chose: " + computerSelection);
     console.log(winner);
-
+    gameCount++;
 }
 
 function roundWinner(){
@@ -70,6 +71,6 @@ function roundWinner(){
 }
 
 function game(){
-        playRound();
+    if (gameCount < 5) playRound();
 }
 
