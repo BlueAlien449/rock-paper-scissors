@@ -4,21 +4,6 @@ let loseCount = 0;
 let tieCount = 0;
 let gameCount = 1;
 
-function getComputerChoice(){
-    let randInt = Math.floor(Math.random() * 3) +1;
-    let oppsChoice;
-
-    if (randInt == 1){
-        oppsChoice = "Rock";
-    } else if (randInt == 2){
-        oppsChoice = "Paper";
-    } else {
-        oppsChoice = "Scissors";
-    }
-    
-    return oppsChoice;
-}
-
 let buttons = document.getElementsByTagName('button');
 let playerChoice;
 let buttonPressed = e => {
@@ -27,6 +12,16 @@ let buttonPressed = e => {
 
 for (let button of buttons) {
     button.addEventListener('click', buttonPressed)
+}
+
+function getComputerChoice(){
+    let randInt = Math.floor(Math.random() * 3) +1;
+    let oppsChoice;
+
+    if (randInt == 1) oppsChoice = "Rock";
+    else if (randInt == 2) oppsChoice = "Paper";
+    else oppsChoice = "Scissors";
+    return oppsChoice;
 }
 
 function gameCounter(){
@@ -70,12 +65,11 @@ function roundWinner(){
     if (gameCount == 5){
         console.log("Number of wins: " + winCount + " Number of losses: " + loseCount + " Number of ties: " + tieCount)
         
-        if (winCount > loseCount){
-            console.log("You win the game")
-        } else {
-            console.log("You lose the game")
-        }
-    } else {return};
+        if (winCount > loseCount) console.log("You win the game!");
+        else if (winCount === loseCount) console.log("It's a tie! No one wins");
+        else console.log("You lose!");
+    } 
+    else return;
 }
 
 function game(){
