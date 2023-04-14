@@ -2,7 +2,6 @@ let winner;
 let winCount = 0;
 let loseCount = 0;
 let tieCount = 0;
-let gameCount = 1;
 
 let buttons = document.getElementsByTagName('button');
 let playerChoice;
@@ -24,15 +23,8 @@ function getComputerChoice(){
     return oppsChoice;
 }
 
-function gameCounter(){
-    gameCount++;
-}
-
 let choiceList = document.querySelectorAll('.choice');
-choiceList.forEach(key => key.addEventListener('click', () => {
-    game();
-    gameCounter();
-}));
+choiceList.forEach(key => key.addEventListener('click', game));
 
 
 function playRound(playerSelection, computerSelection){
@@ -57,25 +49,37 @@ function playRound(playerSelection, computerSelection){
         loseCount++;
     }
 
-    console.log("You chose: " + playerSelection + " computer chose: " + computerSelection);
-    console.log(winner);
+    let gameSelection = document.querySelector('.gameSelection');
+    let roundWinner = document.querySelector('.roundWinner');
+    gameSelection.textContent = "You chose: " + playerSelection + " computer chose: " + computerSelection
+    roundWinner.textContent = winner;
 }
 
 function roundWinner(){
-    if (gameCount == 5){
-        console.log("Number of wins: " + winCount + " Number of losses: " + loseCount + " Number of ties: " + tieCount)
+    let gameInfo = document.querySelector('.gameInfo');
+    let gameWinner = document.querySelector('.gameWinner');
+
+    if (winCount == 5){
+        gameInfo.textContent = "Number of wins: " + winCount + " Number of losses: " + loseCount + " Number of ties: " + tieCount
         
-        if (winCount > loseCount) console.log("You win the game!");
-        else if (winCount === loseCount) console.log("It's a tie! No one wins");
-        else console.log("You lose!");
+        if (winCount > loseCount) gameWinner.textContent = "You win the game!";
+        else if (winCount === loseCount) gameWinner.textContent = "It's a tie! No one wins";
+        else gameWinner.textContent = "You lose!";
     } 
     else return;
 }
 
 function game(){
-    if (gameCount <= 5) playRound();
+    let gamePoints = document.querySelector('.gamePoints');
+
+    if (winCount < 5) {
+        playRound(); 
+        gamePoints.textContent = winCount;
+    }
     else return;
     roundWinner()
 }
+
+
 
 
